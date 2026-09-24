@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b25">
+<title>Para mi muñequita ❤️</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Georgia,"Times New Roman",serif}
+body{min-height:100vh;overflow-x:hidden;color:#fff;background:radial-gradient(circle at 50% 15%,rgba(128,91,190,.28),transparent 28%),radial-gradient(circle at 15% 70%,rgba(255,125,190,.10),transparent 25%),linear-gradient(160deg,#050719 0%,#0b1030 48%,#160b27 100%)}
+.sky{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:twinkle 3s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.25)}}
+.moon{position:absolute;top:7vh;right:10vw;width:115px;height:115px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#fffdf5 0 8%,#f9e9ff 42%,#d9c9f5 100%);box-shadow:0 0 45px rgba(240,220,255,.55),0 0 100px rgba(173,133,255,.18)}
+.moon:after{content:"";position:absolute;width:115px;height:115px;border-radius:50%;background:#080b25;left:35px;top:-9px}
+.wrap{position:relative;z-index:2;width:min(92%,760px);margin:0 auto;padding:55px 0 70px}
+.intro{min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;flex-direction:column}
+.intro .small{font-size:15px;letter-spacing:3px;text-transform:uppercase;color:#e8d8ff;opacity:.9}
+.intro h1{margin:18px 0 12px;font-size:clamp(38px,10vw,72px);line-height:1;color:#ffd9f0;text-shadow:0 0 25px rgba(255,170,220,.3)}
+.intro p{max-width:500px;font-size:18px;line-height:1.7;color:#eee6f7}
+.scroll{margin-top:28px;border:1px solid rgba(255,210,235,.5);border-radius:999px;padding:11px 20px;background:rgba(255,255,255,.07);color:#fff;cursor:pointer;font-size:15px}
+.envelope-section{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.envelope-box{text-align:center}
+.envelope-box h2{font-size:28px;color:#ffe2f2;margin-bottom:35px}
+.envelope{position:relative;width:min(82vw,380px);height:245px;margin:auto;cursor:pointer;perspective:1000px;filter:drop-shadow(0 18px 35px rgba(0,0,0,.45))}
+.env-body{position:absolute;inset:0;background:linear-gradient(145deg,#f7c7dd,#e7a9c8);border-radius:8px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.3);overflow:hidden}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-style:solid}
+.env-body:before{left:0;border-width:0 0 245px 190px;border-color:transparent transparent #d994ba transparent}
+.env-body:after{right:0;border-width:245px 0 0 190px;border-color:transparent transparent transparent #d994ba}
+.flap{position:absolute;z-index:4;top:0;left:0;width:100%;height:58%;background:linear-gradient(155deg,#ffd8e9,#e9adcb);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top center;transition:transform 1s ease;backface-visibility:hidden}
+.seal{position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-15%);width:62px;height:62px;border-radius:50%;background:#b94f86;display:grid;place-items:center;font-size:28px;box-shadow:0 6px 15px rgba(90,20,60,.3);transition:opacity .5s ease}
+.letter-paper{position:absolute;z-index:2;left:6%;bottom:8%;width:88%;height:83%;background:#fff9fc;color:#68465a;border-radius:5px;transform:translateY(40px);transition:transform 1s ease .25s;box-shadow:0 8px 20px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;font-size:18px}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0}
+.envelope.open .letter-paper{transform:translateY(-55px)}
+.open-note{margin-top:25px;color:#ead9ef;font-size:15px}
+.letter-section{display:none;padding:80px 0}
+.letter-card{background:rgba(255,248,253,.97);color:#5f4054;border-radius:20px;padding:clamp(25px,6vw,55px);box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.ornament{text-align:center;color:#bd6796;font-size:27px}
+.letter-card h2{text-align:center;color:#a94d7d;font-size:clamp(27px,6vw,42px);margin:15px 0 35px}
+.letter-card p{font-size:18px;line-height:1.9;margin:0 0 24px}
+.signature{text-align:center;font-size:22px;color:#a94d7d;margin-top:38px}
+.photo-section{display:none;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:60px 0}
+.photo-section.show{display:flex;animation:fadeUp 1.2s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.final-line{font-size:clamp(28px,7vw,48px);color:#ffd7ec;margin:0 0 12px}
+.final-sub{color:#eee0f0;font-size:18px;margin:0 0 35px}
+.photo-frame{width:min(88vw,430px);padding:13px 13px 45px;background:#fffafc;box-shadow:0 25px 65px rgba(0,0,0,.5);transform:rotate(-2deg)}
+.photo-frame img{display:block;width:100%;height:auto;max-height:65vh;object-fit:contain;background:#111}
+.photo-caption{color:#69495d;font-size:18px;margin-top:14px;font-style:italic}
+.back{margin-top:42px;color:#f8dce9;font-size:14px;opacity:.7}
+@media(max-width:600px){.moon{width:80px;height:80px;right:7vw;top:5vh}.moon:after{width:80px;height:80px;left:25px;top:-7px}.intro{min-height:82vh}.letter-card p{font-size:17px;line-height:1.8}}
+</style>
+</head>
+<body>
+<div class="sky" id="sky"></div><div class="moon"></div>
+<main class="wrap">
+<section class="intro" id="intro">
+<div class="small">Una pequeña sorpresa para ti</div>
+<h1>Felices 2 meses<br>mi amor ❤️</h1>
+<p>Dos meses pueden parecer poquito para algunas personas... pero para mí están llenos de momentos que quiero guardar para siempre.</p>
+<button class="scroll" onclick="goToEnvelope()">Hay algo para ti ✨</button>
+</section>
+
+<section class="envelope-section" id="envelopeSection">
+<div class="envelope-box">
+<h2>Te preparé una cartita, muñequita 💌</h2>
+<div class="envelope" id="envelope" onclick="openEnvelope()">
+<div class="env-body"></div>
+<div class="letter-paper"><span>Para mi chaparrita bonita ❤️</span></div>
+<div class="flap"></div><div class="seal">♥</div>
+</div>
+<div class="open-note" id="openNote">Toca el sobre para abrirlo</div>
+</div>
+</section>
+
+<section class="letter-section" id="letterSection">
+<div class="letter-card">
+<div class="ornament">♡ ✦ ♡</div>
+<h2>Oñaaaaaaaaaaa amooooor ❤️</h2>
+<p>La verdad hay tantas cosas que quiero decirte, pero lo primero es agradecerte por este tiempo juntos. No sabes lo feliz que estoy por estar a tu ladito durante este tiempo, por todo lo que hemos compartido, por las series que hemos visto, los animes, los juegos... en fin, por todas las cosas que hemos hecho juntos y que he podido disfrutar a tu ladito.</p>
+<p>Sé que puedo ser en ocasiones complicado o muy "explosivo" en mi manera de hablar, expresarme o reaccionar, y que a veces puedes sentir que te grito o algo parecido. Incluso sé que puedo ser complicado contigo, y quiero agradecerte por soportarme, por tratar de entenderme y por seguir estando ahí.</p>
+<p>También quiero pedirte perdón cuando me equivoco. No soy perfecto y trato de mejorar cada día como persona, y te lo digo porque tú eres una de esas personas que me motivan a buscar ser mejor.</p>
+<p>Gracias por permitirme enamorarme de ti. Desde que comenzamos a pasar tiempo juntos, hasta aquella primera vez que nos quedamos dormidos en llamada siendo novios... gracias por todos esos momentos.</p>
+<p>Gracias por estos 2 meses, muñequita, y espero que puedan ser muchísimos más a tu lado.</p>
+<p>La verdad es que te amo muchísimo y espero que me permitas seguir amándote por mucho, muchísimo tiempo más, chaparrita bonita. ❤️</p>
+<div class="signature">Con muchísimo amor,<br>tu amorcito ❤️</div>
+</div>
+<div style="text-align:center;margin-top:35px"><button class="scroll" onclick="showPhoto()">Hay una última cosita... ✨</button></div>
+</section>
+
+<section class="photo-section" id="photoSection">
+<h2 class="final-line">Y esta eres tú... ❤️</h2>
+<p class="final-sub">Una de las personitas que más quiero en este mundo.</p>
+<div class="photo-frame"><img src="foto.jpg" alt="Una foto especial"><div class="photo-caption">Mi chaparrita bonita ♡</div></div>
+<p class="back">Felices 2 meses, mi vida.<br>Te amo muchísimo. ❤️🌙</p>
+</section>
+</main>
+
+<script>
+const sky=document.getElementById("sky");
+for(let i=0;i<95;i++){
+ const star=document.createElement("span"); star.className="star";
+ star.style.left=Math.random()*100+"%"; star.style.top=Math.random()*100+"%";
+ star.style.animationDelay=Math.random()*4+"s"; star.style.animationDuration=(2+Math.random()*4)+"s";
+ const s=1+Math.random()*3; star.style.width=s+"px"; star.style.height=s+"px"; sky.appendChild(star);
+}
+function goToEnvelope(){document.getElementById("envelopeSection").scrollIntoView({behavior:"smooth"})}
+let opened=false;
+function openEnvelope(){
+ if(opened)return; opened=true;
+ document.getElementById("envelope").classList.add("open");
+ document.getElementById("openNote").textContent="✨";
+ setTimeout(()=>{
+  document.getElementById("letterSection").style.display="block";
+  document.getElementById("letterSection").scrollIntoView({behavior:"smooth"});
+ },1300);
+}
+function showPhoto(){
+ const photo=document.getElementById("photoSection"); photo.classList.add("show");
+ setTimeout(()=>photo.scrollIntoView({behavior:"smooth"}),100);
+}
+</script>
+</body>
+</html>
